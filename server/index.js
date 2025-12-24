@@ -180,13 +180,14 @@ app.post('/api/analyze', authenticateToken, async (req, res) => {
 });
 
 // 5. Static Asset Management (Monolith Mode)
-// This allows the backend to serve the frontend on the same port.
-app.use(express.static(path.join(__dirname, '../')));
+// Serve built files from 'dist' (created by Vite during build)
+const staticPath = path.join(__dirname, '../dist');
+app.use(express.static(staticPath));
 
 // 6. SPA Router Fallback
 app.get('*', (req, res) => {
   if (req.path.startsWith('/api')) return res.status(404).json({ error: 'Endpoint not found' });
-  res.sendFile(path.join(__dirname, '../index.html'));
+  res.sendFile(path.join(staticPath, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
