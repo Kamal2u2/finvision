@@ -1,0 +1,7 @@
+{
+  "name": "FinVision AI",
+  "description": "An automated financial analysis platform that uses Gemini 3 Flash to extract structured data from receipts and invoices, providing real-time P&L insights and expenditure trends.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
